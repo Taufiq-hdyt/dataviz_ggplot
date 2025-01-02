@@ -45,17 +45,29 @@ Aesthetic mapping menghubungkan variabel dalam data ke elemen visual dalam grafi
 Geometri menentukan jenis grafik yang akan digunakan, seperti:
 
 geom_point: Untuk scatter plot (diagram sebar).
+
 geom_line: Untuk grafik garis.
+
 geom_bar: Untuk diagram batang.
+
 geom_histogram: Untuk histogram.
+
 Geometri adalah lapisan utama yang membuat data terlihat di grafik.
 
 # 2.4. Tema (Themes)
-ggplot2 menyediakan berbagai tema untuk mengatur tampilan grafik. Tema dapat digunakan untuk mengubah elemen seperti latar belakang, grid, dan font. Beberapa tema populer adalah theme_minimal(), theme_classic(), dan theme_dark().
+ggplot2 menyediakan berbagai tema untuk mengatur tampilan grafik. Tema dapat digunakan untuk mengubah elemen seperti latar belakang, grid, dan font. Beberapa tema populer adalah
+
+theme_minimal() 
+
+theme_classic()
+
+theme_dark()
 
 ## 2.5. Faceting
 Faceting adalah fitur yang memungkinkan Anda membagi data menjadi subset dan menampilkan subset tersebut dalam grafik terpisah. Ini berguna untuk membandingkan pola atau tren dalam kategori data yang berbeda. Dua jenis faceting adalah:
-1. facet_wrap(): Membagi data berdasarkan satu variabel,
+
+1. facet_wrap(): Membagi data berdasarkan satu variabel.
+
 2. facet_grid(): Membagi data berdasarkan dua variabel.
 
 # 3. Contoh Implementasi ggplot 2
