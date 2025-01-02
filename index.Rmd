@@ -33,11 +33,38 @@ When you click the **Knit** button a document will be generated that includes bo
 ```{r}
 print('hello world')
 ```
-
 ```{r}
-library(readxl)
-iris <- read_excel("iris.xlsx")
-View(iris)
+#muat library gglot2
+library(ggplot2)
+data <- data.frame(x = rnorm(100), y= rnorm(50))
+ggplot(data, aes(x = x,y = y))+
+  geom_point()+
+  labs(title = "point titik", x = "sumbu x", y = "sumbu y")+
+  theme_classic()
+```
+```{r}
+data <- data.frame(x = rnorm(100),y=rnorm(100), grup = sample (c("A", "B", "C", "D"), 100,replace = TRUE))
+ggplot(data, aes(x = x, y = y, color = grup))+
+  geom_point() +
+  facet_wrap(~grup)+
+  scale_color_manual(values = c("A" = "blue", "B" = "red", "C" = "yellow", "D" = "black"))+
+  theme_dark()+
+  labs(title = "plot titik dengan warna berdasarkan grup",
+       x= "nilai x",
+       y= "nilai y",
+       color = "grup")
+```
+```{r}
+library(readr)
+lizard <- read.csv("lizards.csv")
+View(lizard)
+```
+```{r}
+library(ggplot2)
+ggplot(lizard, aes(x = total_length, y = weight))+
+  geom_point()
+  labs(title = "plot titik",x = "total_length", y = "weight")+
+  theme_classic()
 ```
 
 ```{r cars}
