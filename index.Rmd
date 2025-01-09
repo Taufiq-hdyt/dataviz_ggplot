@@ -119,7 +119,7 @@ ggplot(lizard, aes(x = total_length, y = weight))+
 library(ggplot2)
 
 ggplot(lizard, aes(x = total_length, y = weight, color = common_name)) +
-  geom_point(shape = 8) +
+  geom_point(shape = 8,size = 2) +
   labs(title = "Plot Titik", x = "Total Length", y = "Weight") +
   theme_classic()
 ```
