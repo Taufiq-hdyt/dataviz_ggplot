@@ -20,6 +20,7 @@ body{
 text-align: justify}
 </style>
 ```
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -33,15 +34,19 @@ Salah satu keunggulan utama ggplot2 adalah kemudahan penggunaannya, bahkan untuk
 ggplot2 juga menawarkan kemampuan untuk memecah data menjadi subset dan menampilkan setiap subset dalam grafik terpisah melalui fitur yang disebut faceting. Kemampuan ini sangat bermanfaat ketika ingin membandingkan pola atau tren dalam kategori data yang berbeda. Dengan kombinasi fleksibilitas, estetika, dan kekuatan analisis, ggplot2 adalah alat yang tak tergantikan untuk siapa saja yang bekerja dengan data
 
 # 2. Dasar-Dasar ggplot 2
+
 Untuk memahami cara kerja ggplot2, penting untuk mengetahui beberapa elemen dasarnya. Berikut adalah komponen utama dalam ggplot2:
 
 ## 2.1. Data
+
 Data adalah elemen pertama dan paling penting dalam ggplot2. Data harus disusun dalam bentuk data frame, di mana setiap kolom mewakili variabel, dan setiap baris adalah observasi. ggplot2 membaca data ini untuk membuat grafik.
 
 ## 2.2. Aesthetic Mapping (Mapping Estetika)
+
 Aesthetic mapping menghubungkan variabel dalam data ke elemen visual dalam grafik, seperti sumbu X dan Y, warna, ukuran, atau bentuk. Mapping ini dilakukan melalui fungsi aes() yang digunakan untuk menentukan bagaimana data akan divisualisasikan.
 
 ## 2.3. Geometri (Geoms)
+
 Geometri menentukan jenis grafik yang akan digunakan, seperti:
 
 geom_point: Untuk scatter plot (diagram sebar).
@@ -55,20 +60,22 @@ geom_histogram: Untuk histogram.
 Geometri adalah lapisan utama yang membuat data terlihat di grafik.
 
 # 2.4. Tema (Themes)
+
 ggplot2 menyediakan berbagai tema untuk mengatur tampilan grafik. Tema dapat digunakan untuk mengubah elemen seperti latar belakang, grid, dan font. Beberapa tema populer adalah
 
-theme_minimal() 
+theme_minimal()
 
 theme_classic()
 
 theme_dark()
 
 ## 2.5. Faceting
+
 Faceting adalah fitur yang memungkinkan Anda membagi data menjadi subset dan menampilkan subset tersebut dalam grafik terpisah. Ini berguna untuk membandingkan pola atau tren dalam kategori data yang berbeda. Dua jenis faceting adalah:
 
-1. facet_wrap(): Membagi data berdasarkan satu variabel.
+1.  facet_wrap(): Membagi data berdasarkan satu variabel.
 
-2. facet_grid(): Membagi data berdasarkan dua variabel.
+2.  facet_grid(): Membagi data berdasarkan dua variabel.
 
 # 3. Contoh Implementasi ggplot 2
 
@@ -81,6 +88,7 @@ ggplot(data, aes(x = x,y = y))+
   labs(title = "point titik", x = "sumbu x", y = "sumbu y")+
   theme_classic()
 ```
+
 ```{r}
 data <- data.frame(x = rnorm(100),y=rnorm(100), grup = sample (c("A", "B", "C", "D"), 100,replace = TRUE))
 ggplot(data, aes(x = x, y = y, color = grup))+
@@ -93,36 +101,81 @@ ggplot(data, aes(x = x, y = y, color = grup))+
        y= "nilai y",
        color = "grup")
 ```
+
 ```{r}
 library(readr)
 lizard <- read.csv("lizards.csv")
 View(lizard)
 ```
+
 ```{r}
 library(ggplot2)
 ggplot(lizard, aes(x = total_length, y = weight))+
-  geom_point()
+  geom_point(color = "blue",shape = 8)
   labs(title = "plot titik",x = "total_length", y = "weight")+
   theme_classic()
 ```
+```{r}
+library(ggplot2)
+
+ggplot(lizard, aes(x = total_length, y = weight, color = common_name)) +
+  geom_point(shape = 8) +
+  labs(title = "Plot Titik", x = "Total Length", y = "Weight") +
+  theme_classic()
+```
+```{r}
+ggplot(lizard,aes(x=total_length, y=common_name))+
+  geom_jitter()+
+  labs (title="plot titik-titik lizard",x="total_length",y="common_name")
+```
+```{r}
+ggplot(lizard,aes(x=total_length, y=common_name))+
+  geom_line()+
+  labs (title="plot line lizard",x="total_length",y="common_name")
+```
+```{r}
+ggplot(lizard,aes(x=total_length))+
+  geom_histogram()+
+  labs (title="plot histogram lizard",x="total_length")
+```
+```{r}
+ggplot(lizard,aes( y=common_name))+
+  geom_bar()+
+  labs (title="plot bar lizard",y="common_name")
+```
+```{r}
+ggplot(lizard,aes(x=weight))+
+  geom_histogram(color = "blue",size = 2,shape = 16,fill = "magenta",linetype ="dotted")+
+  labs (title="dinding lizard",x="weight",y = "count")
+```
+
+
 # 4. Read Data
+
 Read data adalah proses membaca atau mengimpor data dari sumber eksternal (seperti file atau database) ke dalam R untuk dianalisis. Data ini bisa berupa file spreadsheet, teks, CSV, JSON, atau bahkan database. Proses ini penting karena analisis data hanya bisa dilakukan setelah data berhasil dimasukkan ke dalam R.
 
 ## 4.1 Jenis File yang Bisa Dibaca di R
+
 ### 1.File CSV (Comma Separated Values)
+
 CSV adalah format yang paling umum digunakan untuk menyimpan data. Setiap baris dalam file mewakili satu observasi, dan setiap nilai dipisahkan oleh tanda koma.
 
 ### 2.File Excel (XLS atau XLSX)
+
 Data yang disimpan dalam file Excel sering digunakan dalam pekerjaan administratif atau akademik. File ini mendukung beberapa lembar kerja (worksheet).
 
 ### 3.File Teks (TXT)
+
 File teks biasanya digunakan untuk data dengan pemisah khusus, seperti tab atau spasi.
 
 ### 4.File JSON (JavaScript Object Notation)
+
 Format ini sering digunakan untuk data yang berasal dari API atau aplikasi berbasis web.
 
 ### 5.Database SQL
+
 Jika data disimpan dalam database, Anda bisa mengaksesnya langsung dari R dengan koneksi ke database tersebut.
 
 ### 6.Sumber Data Online
+
 R juga memungkinkan Anda membaca data langsung dari internet, seperti file CSV atau JSON yang tersedia melalui URL.
