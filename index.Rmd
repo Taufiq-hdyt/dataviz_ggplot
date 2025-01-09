@@ -152,7 +152,7 @@ ggplot(lizard,aes(x=weight))+
 
 # 4. Read Data
 
-Read data adalah proses membaca atau mengimpor data dari sumber eksternal (seperti file atau database) ke dalam R untuk dianalisis. Data ini bisa berupa file spreadsheet, teks, CSV, JSON, atau bahkan database. Proses ini penting karena analisis data hanya bisa dilakukan setelah data berhasil dimasukkan ke dalam R.
+Read data adalah proses membaca atau mengimpor data dari sumber external (seperti file atau database) ke dalam R untuk dianalisis. Data ini bisa berupa file spreadsheet, teks, CSV, JSON, atau bahkan database. Proses ini penting karena analisis data hanya bisa dilakukan setelah data berhasil dimasukkan ke dalam R.
 
 ## 4.1 Jenis File yang Bisa Dibaca di R
 
