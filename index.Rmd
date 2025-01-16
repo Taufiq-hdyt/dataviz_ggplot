@@ -213,11 +213,5 @@ gapminder_plot <- ggplot(
   labs(x = "GDP per kapita", y = "Life experiency")
 gapminder_plot
 ```
-```{r}
-library(gganimate)
-gapminder_plot+transition_time(year)+
-  labs(title = "year: (frame_time")+
-  
-```
 
 
